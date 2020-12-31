@@ -12,10 +12,10 @@ class Atk extends Component {
             <div>
                 <label  for="atk">PHY/MAG ATK</label><br/>
                 <input  value={this.state.stats}
-                        onChange={event =>  {
+                        onChange={event =>  { 
                                     const stats = event.target.value;
                                     this.setState({ stats });
-                                    this.props.onValueChange(stats);
+                                    this.props.onValueChange(stats); 
                                 }
                         }
                         type="number"
@@ -41,7 +41,7 @@ class AtkIncrease extends Component {
                                     const stats = event.target.value;
                                     this.setState({ stats });
                                     this.props.onValueChange(stats);
-                                }
+                                } 
                             }
                         type="number"
                 />
@@ -66,7 +66,7 @@ class DmgIncrease extends Component {
                             const stats = event.target.value;
                             this.setState({ stats });
                             this.props.onValueChange(stats);
-                            }
+                            } 
                         }
                         type ="number"
                 />
@@ -91,7 +91,7 @@ class BossAtk extends Component {
                             const stats = event.target.value
                             this.setState({ stats });
                             this.props.onValueChange(stats);
-                        }
+                        } 
                         }
                         type="number"/>
                 <br/><br/>
@@ -115,8 +115,8 @@ class SkillDmg extends Component {
                             const stats = event.target.value;
                             this.setState({ stats });
                             this.props.onValueChange(stats);
-                            }
-                        }
+                            } 
+                        } 
                         type="number"
                 />
                 <br/><br/>
@@ -140,7 +140,7 @@ class SkillHit extends Component {
                             const stats = event.target.value;
                             this.setState({ stats });
                             this.props.onValueChange(stats);
-                            }
+                            } 
                         }
                         type="number"
                 />
@@ -165,7 +165,7 @@ class CritRate extends Component {
                             const stats = event.target.value;
                             this.setState({ stats });
                             this.props.onValueChange(stats);
-                            }
+                            } 
                         }
                         type="number"
                 />
@@ -183,14 +183,14 @@ class CritDmg extends Component {
 
     render() {
         return (
-            <div>
+            <div> 
                 <label  for="critdmg">Crit DMG (%)</label><br/>
                 <input  value={this.state.stats}
                         onChange={event => {
                             const stats = event.target.value;
                             this.setState({ stats });
                             this.props.onValueChange(stats);
-                            }
+                            } 
                         }
                         type="number"
                 />
@@ -215,8 +215,8 @@ class FinalDmg extends Component {
                             const stats = event.target.value;
                             this.setState({ stats });
                             this.props.onValueChange(stats);
-                            }
-                        }
+                            } 
+                        } 
                         type="number"
                 />
                 <br/><br/>
@@ -240,8 +240,8 @@ class SkillFinalDmg extends Component {
                             const stats = event.target.value;
                             this.setState({ stats });
                             this.props.onValueChange(stats);
-                            }
-                        }
+                            } 
+                        } 
                         type="number"
                 />
                 <br/><br/>
@@ -250,29 +250,4 @@ class SkillFinalDmg extends Component {
     }
 }
 
-class CritAtk extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {stats: ''}
-    }
-
-    render() {
-        return (
-            <div>
-                <label  for="critatk">Crit ATK</label><br/>
-                <input  value={this.state.stats}
-                        onChange={event => {
-                            const stats = event.target.value;
-                            this.setState({ stats });
-                            this.props.onValueChange(stats);
-                            }
-                        }
-                        type="number"
-                />
-                <br/><br/>
-            </div>
-        )
-    }
-}
-
-export { Atk, AtkIncrease, DmgIncrease, BossAtk, SkillDmg, SkillHit, CritRate, CritDmg, FinalDmg, SkillFinalDmg, CritAtk }
+export { Atk, AtkIncrease, DmgIncrease, BossAtk, SkillDmg, SkillHit, CritRate, CritDmg, FinalDmg, SkillFinalDmg }

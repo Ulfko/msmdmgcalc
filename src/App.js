@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Atk, AtkIncrease, DmgIncrease, BossAtk, SkillDmg, SkillHit, CritRate, CritDmg, FinalDmg, SkillFinalDmg,  CritAtk} from './Components/CalculatorItems';
+import {Atk, AtkIncrease, DmgIncrease, BossAtk, SkillDmg, SkillHit, CritRate, CritDmg, FinalDmg, SkillFinalDmg} from './Components/CalculatorItems';
 import Swal from 'sweetalert2';
 import {CalculateButton, MoreStatsButton, } from './Components/Buttons';
 import {DamageFormula, BossDamageFormula, MoreStats } from './Components/PopUps'
@@ -24,7 +24,6 @@ class App extends Component {
                         critDmg: '',
                         finalDmg: '',
                         skillFinalDmg: '',
-                        critAtk: '',
                         totalDmg: '',
                         totalCritDmg: '',
                         totalNonCritDmg: '',
@@ -53,10 +52,9 @@ class App extends Component {
         let critDmg = this.state.critDmg;
         let finalDmg = this.state.finalDmg;
         let skillFinalDmg = this.state.skillFinalDmg;
-        let critAtk = this.state.critAtk;
 
         let totalDamageWithoutCrit = (atk) * (skillDmg/100) * (1+dmgIncrease/100) * (1+(finalDmg/100)+(skillFinalDmg/100)) * (1+atkIncrease/100) * (skillHit);
-        let totalDamageWithCrit = (atk+critAtk) * (skillDmg/100) * (1+dmgIncrease/100) * (1+(finalDmg/100)+(skillFinalDmg/100)) * (1+atkIncrease/100) * (1.2+critDmg/100) * (skillHit);
+        let totalDamageWithCrit = (atk) * (skillDmg/100) * (1+dmgIncrease/100) * (1+(finalDmg/100)+(skillFinalDmg/100)) * (1+atkIncrease/100) * (1.2+critDmg/100) * (skillHit);
 
         let totalAverageDamage = ((1 - critRate/100) * totalDamageWithoutCrit) + ((critRate/100) * totalDamageWithCrit);
         let totalCritDamagePerLine = totalDamageWithCrit / skillHit;
@@ -85,7 +83,7 @@ class App extends Component {
             return Swal("You can't have more than", "100% Crit Rate!", "warning")
         }
 
-        this.setState({ totalDmg: totalDamageRound,
+        this.setState({ totalDmg: totalDamageRound, 
                         totalCritDmg: totalCritDamageRound,
                         totalNonCritDmg: totalNonCritDamageRound,
                         totalBossDmg: totalBossDamageRound,
@@ -96,7 +94,7 @@ class App extends Component {
 
     refreshPage = () => {
         window.location.reload();
-    }
+    } 
 
     _handleKeyPress = (e) => {
         if (e.key === 'Enter') {
@@ -160,8 +158,7 @@ class App extends Component {
                                 critRate={this.state.critRate}
                                 critDmg={this.state.critDmg}
                                 finalDmg={this.state.finalDmg}
-                                skillFinalDmg={this.state.skillFinalDmg}
-                                critAtk={this.state.critAtk}
+                                skillFinalDmg={this.state.skillFinalDmg} 
                             />
                     </div>
                     <div className={"collapse navbar-collapse " + show}>
@@ -175,19 +172,18 @@ class App extends Component {
                                 critRate={this.state.critRate}
                                 critDmg={this.state.critDmg}
                                 finalDmg={this.state.finalDmg}
-                                skillFinalDmg={this.state.skillFinalDmg}
-                                critAtk={this.state.critAtk}
+                                skillFinalDmg={this.state.skillFinalDmg} 
                             />
                     </div>
                 </div>
                     <div className="tc">
-                        <DamageChart
-                            totalDmg={this.state.totalDmg}
+                        <DamageChart 
+                            totalDmg={this.state.totalDmg} 
                             totalNonCritDmg={this.state.totalNonCritDmg}
                             totalCritDmg={this.state.totalCritDmg}
                         />
                         <div className={"collapse navbar-collapse " + hi}>
-                        <MoreStats
+                        <MoreStats 
                             totalBossDmg={this.state.totalBossDmg}
                             totalBossNonCritDmg={this.state.totalBossNonCritDmg}
                             totalBossCritDmg={this.state.totalBossCritDmg}
@@ -203,8 +199,6 @@ class App extends Component {
                             <DmgIncrease onValueChange={dmgIncrease => this.setState({ dmgIncrease })}/>
                             <BossAtk onValueChange={bossAtk => this.setState({ bossAtk })}/>
                             <FinalDmg onValueChange={finalDmg => this.setState({ finalDmg })}/>
-                            <CritAtk onValueChange={critAtk => this.setState({ critAtk })}/>
-
                         </div>
                         <div className="col col-lg-3 text-center">
                             <SkillDmg onValueChange={skillDmg => this.setState({ skillDmg })}/>
@@ -219,10 +213,10 @@ class App extends Component {
                         <CalculateButton damageCalc={this.damageCalc}/>
                     </div>
                 </form>
-            </div>
-            </div>
-        </div>
-        )
+            </div>  
+            </div> 
+        </div>                 
+        )    
     }
 }
 
